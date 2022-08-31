@@ -1,20 +1,21 @@
 import React from 'react';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import Feed from './Feed';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 function App() {
   return (
     <div className="app">
-      <h1>Lets build a linkedin clone</h1>
-
       {/* Header */}
       <Header/>
 
       {/* App Body */}
-        {/* Sidebar */}
-        {/* Feed */}
-        {/* Widgets */}
+        <div className="app__body">
+          <Sidebar />
+          <Feed/>
+          {/* Widgets */}
+        </div>
     </div>
   ); 
 }

@@ -9,9 +9,17 @@ import './Header.css'
 import logo from './img/linkedin.png'
 import avatarImg from './img/1590168683419.jpg'
 import HeaderOption from './HeaderOption';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from './features/userSlice';
+import { auth } from './firebase';
 
 function Header() {
+  const dispatch = useDispatch()
+
+  const logoutOfApp = () => {
+    dispatch(logout());
+    auth.signOut();
+  }
   return (
     <div className='header'>
 
@@ -20,7 +28,7 @@ function Header() {
 
             <div className="header__search">
                 <SearchIcon/>
-                <input type="text" />
+                <input placeholder='Search' type="text" />
             </div>
 
         </div>
@@ -31,7 +39,11 @@ function Header() {
             <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
             <HeaderOption Icon={ChatIcon} title="Messagin"/>
             <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
-            <HeaderOption avatar={avatarImg} title="Me"/>
+            <HeaderOption 
+              onClick={logoutOfApp}
+              title="Me"
+              avatar= {true}
+            />
         </div>
     </div>
   )
